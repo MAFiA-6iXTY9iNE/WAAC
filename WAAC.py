@@ -4,13 +4,12 @@ colorama.init()
 from termcolor import colored
 
 print("\n")
-print(colored(r"""
-█░█░█ █░█ ▄▀█ ▀█▀ █▀ ▄▀█ █▀█ █▀█   ▄▀█ █░█ ▄▀█ █ █░░ ▄▀█ █▄▄ █ █░░ █ ▀█▀ █▄█   █▀▀ █▄▀ █▀▀ █▀▀ █▄▀ █▀▀ █▀█
-▀▄▀▄▀ █▀█ █▀█ ░█░ ▄█ █▀█ █▀▀ █▀▀   █▀█ ▀▄▀ █▀█ █ █▄▄ █▀█ █▄█ █ █▄▄ █ ░█░ ░█░   █▄▄ █░█ ██▄ █▄▄ █░█ ██▄ █▀▄""", 'light_magenta'))
+print(colored(r"""█░█░█ █░█ ▄▀█ ▀█▀ █▀ ▄▀█ █▀█ █▀█   ▄▀█ █░█ ▀█▀ █▀█   █▀ █▀▀ █▄░█ █▀▄ █▀▀ █▀█  
+▀▄▀▄▀ █▀█ █▀█ ░█░ ▄█ █▀█ █▀▀ █▀▀   █▀█ █▄█ ░█░ █▄█   ▄█ ██▄ █░▀█ █▄▀ ██▄ █▀▄ """, 'green'))
 print("\n")
-print(colored("V3.0".center(100,"-"), 'yellow'))
+print(colored("V3.0".center(75,"-"), 'yellow'))
 print("\n")
-print(colored("© PASINDU THARUSHA - All Rights Reserved. \nThis project is based on open source dependencies built by open source communities.\nThe software is licensed under GPL V3 Licence. \nE-mail : pasindutharushahewage@outlook.com", 'light_magenta'))
+print(colored("© PASINDU THARUSHA - All Rights Reserved. \nThis project is based on open source dependencies built by open source communities.\nThe software is licensed under GPL V3 Licence. \nE-mail : pasindutharushahewage@outlook.com".center(24,"-"), 'green'))
 print("\n")
 
 from rich.progress import track
@@ -21,6 +20,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 from colorama import init as colorama_init
 from colorama import Fore
@@ -34,7 +34,7 @@ count = 0
 
 options = Options()
 service = Service()
-options.add_argument(r"--user-data-dir=C:\\Users\\5523\\AppData\\Local\\Google\\Chrome\\User Data\\")
+options.add_argument(r"--user-data-dir=/root/.config/google-chrome/Profile 6")
 driver = webdriver.Chrome(service=service, options=options)
 driver.get("https://web.whatsapp.com")
 
