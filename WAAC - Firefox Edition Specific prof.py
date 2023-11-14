@@ -5,8 +5,11 @@ from termcolor import colored
 
 print("\n")
 print(colored(r"""
-█░█░█ █░█ ▄▀█ ▀█▀ █▀ ▄▀█ █▀█ █▀█   ▄▀█ █░█ ▄▀█ █ █░░ ▄▀█ █▄▄ █ █░░ █ ▀█▀ █▄█   █▀▀ █▄▀ █▀▀ █▀▀ █▄▀ █▀▀ █▀█
-▀▄▀▄▀ █▀█ █▀█ ░█░ ▄█ █▀█ █▀▀ █▀▀   █▀█ ▀▄▀ █▀█ █ █▄▄ █▀█ █▄█ █ █▄▄ █ ░█░ ░█░   █▄▄ █░█ ██▄ █▄▄ █░█ ██▄ █▀▄""", 'light_yellow'))
+█░█░█ █░█ ▄▀█ █▀ ▀█▀ ▄▀█ █▀█ █▀█   ▄▀█ █░█ ▀█▀ █▀█   █▀ █▀▀ █▄░█ █▀▄ █▀▀ █▀█   ▄▄   █▀▀ █ █▀█ █▀▀ █▀▀ █▀█ ▀▄▀
+▀▄▀▄▀ █▀█ █▀█ ▄█ ░█░ █▀█ █▀▀ █▀▀   █▀█ █▄█ ░█░ █▄█   ▄█ ██▄ █░▀█ █▄▀ ██▄ █▀▄   ░░   █▀░ █ █▀▄ ██▄ █▀░ █▄█ █░█
+
+█▀▀ █▀▄ █ ▀█▀ █ █▀█ █▄░█
+██▄ █▄▀ █ ░█░ █ █▄█ █░▀█""", 'light_yellow'))
 print("\n")
 print(colored("V5.0".center(75,"-"), 'yellow'))
 print("\n")
@@ -33,11 +36,11 @@ excel_data = pandas.read_excel('Recipients data.xlsx', sheet_name='Recipients')
 count = 0
 
 # Custom profile folder to keep the minidump files
-profile = ("C:\\Users\\5523\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\7njbbb0x.default-release-1684395502770")
+profile = ("/root/.mozilla/firefox/812m1v6m.default-release")
 
 # Use the above folder as custom profile
 opts = Options()
-opts.binary_location = r"C:\\Users\\5523\\AppData\\Local\\Mozilla Firefox\\firefox.exe"
+opts.binary_location = r"/usr/bin/firefox"
 service = Service(log_output = "geckodriver.log")
 opts.add_argument("-profile")
 opts.add_argument(profile)
