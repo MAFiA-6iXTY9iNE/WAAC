@@ -5,8 +5,11 @@ from termcolor import colored
 
 print("\n")
 print(colored(r"""
-█░█░█ █░█ ▄▀█ ▀█▀ █▀ ▄▀█ █▀█ █▀█   ▄▀█ █░█ ▄▀█ █ █░░ ▄▀█ █▄▄ █ █░░ █ ▀█▀ █▄█   █▀▀ █▄▀ █▀▀ █▀▀ █▄▀ █▀▀ █▀█
-▀▄▀▄▀ █▀█ █▀█ ░█░ ▄█ █▀█ █▀▀ █▀▀   █▀█ ▀▄▀ █▀█ █ █▄▄ █▀█ █▄█ █ █▄▄ █ ░█░ ░█░   █▄▄ █░█ ██▄ █▄▄ █░█ ██▄ █▀▄""", 'light_yellow'))
+█░█░█ █░█ ▄▀█ █▀ ▀█▀ ▄▀█ █▀█ █▀█   ▄▀█ █░█ ▀█▀ █▀█   █▀ █▀▀ █▄░█ █▀▄ █▀▀ █▀█   ▄▄   █▀▀ █ █▀█ █▀▀ █▀▀ █▀█ ▀▄▀
+▀▄▀▄▀ █▀█ █▀█ ▄█ ░█░ █▀█ █▀▀ █▀▀   █▀█ █▄█ ░█░ █▄█   ▄█ ██▄ █░▀█ █▄▀ ██▄ █▀▄   ░░   █▀░ █ █▀▄ ██▄ █▀░ █▄█ █░█
+
+█▀▀ █▀▄ █ ▀█▀ █ █▀█ █▄░█
+██▄ █▄▀ █ ░█░ █ █▄█ █░▀█""", 'light_yellow'))
 print("\n")
 print(colored("V5.0".center(75,"-"), 'yellow'))
 print("\n")
@@ -21,7 +24,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.service import Service
-from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from time import sleep
 from colorama import init as colorama_init
 from colorama import Fore
@@ -32,11 +34,19 @@ colorama_init()
 excel_data = pandas.read_excel('Recipients data.xlsx', sheet_name='Recipients')
 
 count = 0
-service =Service()
+
+# Custom profile folder to keep the minidump files
+profile = ("/root/.mozilla/firefox/812m1v6m.default-release")
+
+# Use the above folder as custom profile
 opts = Options()
-opts.binary_location = r"C:\\Users\\5523\\AppData\\Local\\Mozilla Firefox\\firefox.exe"
+opts.binary_location = r"/usr/bin/firefox"
 service = Service(log_output = "geckodriver.log")
+opts.add_argument("-profile")
+opts.add_argument(profile)
+
 driver = webdriver.Firefox(options=opts, service=service)
+
 driver.get('https://web.whatsapp.com')
 input(colored("Press ENTER after login into Whatsapp Web and your chats are visiable.", 'yellow'))
 for column in track(excel_data['Contact'].tolist(), description="Sending Messages..."):
